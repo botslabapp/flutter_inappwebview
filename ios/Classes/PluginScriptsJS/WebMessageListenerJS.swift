@@ -86,12 +86,12 @@ window.\(JAVASCRIPT_BRIDGE_NAME)._isOriginAllowed = function(allowedOriginRules,
         if (rule.host != null && rule.host[0] === "[") {
             try {
                 IPv6 = window.\(JAVASCRIPT_BRIDGE_NAME)._normalizeIPv6(rule.host.substring(1, rule.host.length - 1));
-            } catch {}
+            } catch (e) {}
         }
         var hostIPv6 = null;
         try {
             hostIPv6 = window.\(JAVASCRIPT_BRIDGE_NAME)._normalizeIPv6(host);
-        } catch {}
+        } catch (e) {}
 
         var schemeAllowed = scheme == rule.scheme;
         
