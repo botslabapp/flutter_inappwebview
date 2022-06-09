@@ -191,6 +191,7 @@ public class InAppWebViewClient extends WebViewClient {
   @Override
   public void onPageStarted(WebView view, String url, Bitmap favicon) {
     final InAppWebView webView = (InAppWebView) view;
+    view.getSettings().setBlockNetworkImage(true);
     webView.isLoading = true;
     webView.disposeWebMessageChannels();
     webView.userContentController.resetContentWorlds();
@@ -207,9 +208,10 @@ public class InAppWebViewClient extends WebViewClient {
     channel.invokeMethod("onLoadStart", obj);
   }
 
-
+  @Override
   public void onPageFinished(WebView view, String url) {
     final InAppWebView webView = (InAppWebView) view;
+    view.getSettings().setBlockNetworkImage(false);
     webView.isLoading = false;
     loadCustomJavaScriptOnPageFinished(webView);
     previousAuthRequestFailureCount = 0;
