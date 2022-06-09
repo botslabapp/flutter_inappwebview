@@ -216,6 +216,7 @@ final public class InAppWebView extends InputAwareWebView implements InAppWebVie
 
     WebSettings settings = getSettings();
 
+    settings.setRenderPriority(WebSettings.RenderPriority.HIGH);
     settings.setJavaScriptEnabled(options.javaScriptEnabled);
     settings.setJavaScriptCanOpenWindowsAutomatically(options.javaScriptCanOpenWindowsAutomatically);
     settings.setBuiltInZoomControls(options.builtInZoomControls);
